@@ -1,5 +1,8 @@
 # cross-and-crescent
 
+[![Build status](https://ci.appveyor.com/api/projects/status/ad0eshengay90ivq?svg=true)](https://ci.appveyor.com/project/lcamichigan/cross-and-crescent)
+[![Build Status](https://travis-ci.org/lcamichigan/cross-and-crescent.svg?branch=master)](https://travis-ci.org/lcamichigan/cross-and-crescent)
+
 This is a [LaTeX](https://www.latex-project.org) package for drawing the logo of
 [Lambda Chi Alpha Fraternity](https://www.lambdachi.org) using
 [Ti*k*Z](https://www.ctan.org/pkg/pgf) or
