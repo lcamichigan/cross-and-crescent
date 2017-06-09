@@ -1,0 +1,33 @@
+os: osx
+
+before_install:
+  # Download and install a minimal TeX Live, based on
+  # https://github.com/latex3/latex3/blob/master/support/texlive.sh.
+  - wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  - tar -xzf install-tl-unx.tar.gz
+  - cd install-tl-20*
+  - echo -e "selected_scheme scheme-minimal\nTEXDIR /usr/local/texlive\noption_doc 0\noption_src 0" > texlive.profile
+  - sudo ./install-tl --profile=texlive.profile
+  - cd ..
+  # Asymptote requires Ghostscript.
+  - brew install ghostscript
+  - PATH=$PATH:/usr/local/texlive/bin/x86_64-darwin
+  - sudo tlmgr install
+    asymptote
+    fontspec
+    graphics
+    hyperref
+    latex-bin
+    oberdiek
+    pgf
+    standalone
+    url
+    xcolor
+    xetex
+    xkeyval
+    zapfding
+
+script:
+  - for i in {1..2}; do xetex -fmt=xelatex -interaction=batchmode cross-and-crescent.dtx; done
+  - latex -interaction batchmode -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
+  - asy -outformat pdf -outname logo.pdf -noView -command 'include "cross-and-crescent.asy"; draw(crossAndCrescentPath());'

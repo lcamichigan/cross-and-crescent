@@ -1,0 +1,464 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2017 Sigma Alumni Association of Lambda Chi Alpha, Inc.
+%
+% This file may be distributed and/or modified under the conditions of the LaTeX
+% Project Public License, either version 1.3c of this license or (at your
+% option) any later version. The latest version of this license is in
+%    https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX version
+% 2005/12/01 or later.
+%
+% This file has the LPPL maintenance status `maintained'.
+%
+% This work consists of the file cross-and-crescent.dtx and the derived files
+%   cross-and-crescent.asy
+%   cross-and-crescent.pdf
+%   cross-and-crescent.sty
+%<*internal>
+\begingroup
+\input docstrip
+\preamble
+
+This is a generated file.
+
+Copyright (C) 2017 Sigma Alumni Association of Lambda Chi Alpha, Inc.
+
+This file may be distributed and/or modified under the conditions of the
+LaTeX Project Public License, either version 1.3c of this license or (at your
+option) any later version. The latest version of this license is in
+   https://www.latex-project.org/lppl.txt
+and version 1.3c or later is part of all distributions of LaTeX version
+2005/12/01 or later.
+
+This file has the LPPL maintenance status `maintained'.
+\endpreamble
+
+\keepsilent
+\askforoverwritefalse
+\generate{
+  \file{cross-and-crescent.sty}{\from{cross-and-crescent.dtx}{sty}}
+  \file{cross-and-crescent.asy}{\nopreamble\nopostamble\from{cross-and-crescent.dtx}{asy}}
+}
+\endgroup
+%</internal>
+%
+%<*sty>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cross-and-crescent}[2017/06/09 v1.0 Draw a cross and crescent]
+%</sty>
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[no-config]{fontspec}
+\usepackage{cross-and-crescent}
+\usepackage[colorlinks]{hyperref}
+\usepackage{mleftright}
+\usetikzlibrary{calc}
+\begin{document}
+\DocInput{cross-and-crescent.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \GetFileInfo{cross-and-crescent.sty}
+%
+% \changes{v1.0}{2017/06/09}{Initial release}
+%
+% \title{The \textsf{cross-and-crescent} package}
+% \author{Sigma Zeta of ΛΧΑ}
+% \date{June 9, 2017}
+%
+% \maketitle
+%
+% \section{Introduction}
+%
+% \newcommand\tikzname{Ti\textit{k}Z}
+%
+% This package contains commands for drawing the logo of
+% \href{https://www.lambdachi.org}{Lambda Chi Alpha Fraternity} using
+% \href{https://www.ctan.org/pkg/pgf}{\tikzname} or
+% \href{http://asymptote.sourceforge.net}{\texttt{Asymptote}}.
+%
+% It’s convenient to work with an 8×8 cross and crescent:
+%
+% ^^A These colors are from the 2017 Lambda Chi Alpha Style Guide
+% ^^A (https://www.lambdachi.org/wp-content/uploads/2017/03/Style-Guide-2017.pdf)
+% \definecolor{purple} {RGB} { 83,  43, 126}
+% \definecolor{green}  {RGB} {  4, 107,  55}
+% \definecolor{gold}   {RGB} {213, 162,  41}
+%
+% \begin{center}
+% \begin{tikzpicture}
+%   \crossAndCrescentSetMacros
+%
+%   \coordinate [label=above right:$A$]    (A)  at (4, 1);
+%   \coordinate [label=above right:$B$]    (B)  at (\outerCoordinate, 1);
+%   \coordinate [label=below left: $B'$]   (B1) at (-1, -\outerCoordinate);
+%   \coordinate [label=below right:$B''$]  (B2) at (1, -\outerCoordinate);
+%   \coordinate [label=below right:$B'''$] (B3) at (\outerCoordinate, -1);
+%   \coordinate [label=above right:$C$]    (C)  at (\intersectionCoordinate - 1, \intersectionCoordinate);
+%   \coordinate [label=below left: $C'$]   (C1) at (-\intersectionCoordinate, 1 - \intersectionCoordinate);
+%   \coordinate [label=above left: $D$]    (D)  at (-\innerCoordinate, 1);
+%   \coordinate [label=above left: $D'$]   (D1) at (-1, \innerCoordinate);
+%   \coordinate [label=below right:$E$]    (E)  at (1, \interiorCoordinate);
+%   \coordinate [label=below right:$E'$]   (E1) at (-\interiorCoordinate, -1);
+%
+%   \draw[lightgray, very thin] (-4.9, -4.9) grid (4.9, 4.9);
+%
+%   \begin{scope}[gray]
+%     \draw[->] (-5,  0) -- (5, 0) node[right] (x) {$x$};
+%     \draw[->] ( 0, -5) -- (0, 5) node[above]     {$y$};
+%     ^^A Add a path as long as the x-axis label to the left side of the picture
+%     ^^A so that the y-axis can be centered.
+%     \path let \p1=($(-5, 0) - (x.east) + (x.west)$) in (-5, 0) -- (\x1, 0);
+%   \end{scope}
+%   \begin{scope}[gold!40]
+%     \draw ( 4,  1) -- ( 1,  1);
+%     \draw (-1, -1) -- (-1, -4);
+%     \draw ( 1, -4) -- ( 1, -1);
+%     \draw ( 1, -1) -- ( 4, -1);
+%   \end{scope}
+%   \begin{scope}[green!25]
+%     \draw (0, 0) circle [radius=\crescentRadius];
+%     \draw (0, 0) -- (B);
+%     \draw (0, 0) -- (C);
+%   \end{scope}
+%   \begin{scope}[purple!25]
+%     \draw (-1, 1) circle [radius=\crescentRadius];
+%     \draw (-1, 1) -- (C);
+%     \draw (-1, 1) -- (E);
+%   \end{scope}
+%
+%   \begin{scope}[very thick]
+%     \draw[gold]   (A)  -- (B);
+%     \draw[green]  (B)  arc [radius = \crescentRadius, start angle = \outerAngle,      end angle = \innerAngle];
+%     \draw[purple] (C)  arc [radius = \crescentRadius, start angle = 90 - \innerAngle, end angle = 0];
+%     \draw[gold]   (D)  --
+%       ( 1,  1) -- ( 1,  4) -- (-1,  4) --
+%       (-1,  1) -- (-4,  1) -- (-4, -1) --
+%       (-1, -1) -- (D1);
+%     \draw[purple] (D1) arc [radius = \crescentRadius, start angle = 270,               end angle = 180 + \innerAngle];
+%     \draw[green]  (C1) arc [radius = \crescentRadius, start angle = 270 - \innerAngle, end angle = 270 - \outerAngle];
+%     \draw[gold]   (B1) -- (-1, -4) -- (1, -4) -- (B2);
+%     \draw[green]  (B2) arc [radius = \crescentRadius, start angle = 270 + \outerAngle, end angle = 360 - \outerAngle];
+%     \draw[gold]   (B3) -- (4, -1) -- (A);
+%
+%     \draw[gold]   (E1) -- (1, -1) -- (E);
+%     \draw[purple] (E)  arc [radius = \crescentRadius, start angle = -\interiorAngle, end angle = \interiorAngle - 90];
+%   \end{scope}
+%
+%   \foreach \point in {A, B, C, D, B1, C1, D1, B2, B3, E, E1}
+%     \fill[black] (\point) circle (1.5bp);
+%
+%   \draw (1.1, 0)      arc [radius = 1.1, start angle = 0, end angle = \outerAngle]      node [pos=0.5, right] {$\alpha$};
+%   \draw (1, 0)        arc [radius = 1,   start angle = 0, end angle = \innerAngle]      node [pos=0.6, right] {$\beta$};
+%   \draw (-1 + 0.6, 1) arc [radius = 0.6, start angle = 0, end angle = 90 - \innerAngle] node [pos=0.7, right] {$\beta'$};
+%   \draw (-1 + 0.5, 1) arc [radius = 0.5, start angle = 0, end angle = -\interiorAngle]  node [pos=0.8, right] {$\gamma$};
+% \end{tikzpicture}
+% \end{center}
+%
+% A cross and crescent consists of segments of three shapes:
+% \begin{enumerate}
+%   \item A Greek cross
+%   \tikz[scale=0.125 / 0.9ex] \draw[gold, thick]
+%     ( 4,  1) --
+%     ( 1,  1) -- ( 1,  4) -- (-1,  4) --
+%     (-1,  1) -- (-4,  1) -- (-4, -1) --
+%     (-1, -1) -- (-1, -4) -- ( 1, -4) --
+%     ( 1, -1) -- ( 4, -1) -- cycle;
+%
+%   \item An outer circle
+%   \tikz[baseline] \draw[green, thick] (1ex, 1ex) circle (1ex);
+%   (forming the outside of the crescent) with equation
+%   \begin{equation}\label{eq:outer circle}
+%     x^2 + y^2 = r^2
+%   \end{equation}
+%
+%   \item An inner circle
+%   \tikz[baseline] \draw[purple, thick] (1ex, 1ex) circle (1ex);
+%   (forming the inside of the crescent) centered at
+%   $(-1, 1)$ with equation
+%   \begin{equation}\label{eq:inner circle}
+%     (x + 1)^2 + (y - 1)^2 = r^2
+%   \end{equation}
+% \end{enumerate}
+%
+% \section{Implementation}
+%
+% Require \tikzname.
+%    \begin{macrocode}
+%<sty>\RequirePackage{tikz}
+%    \end{macrocode}
+%
+% \begin{macro}{\crossAndCrescentSetMacros}
+% Assemble some coordinates and angles.
+%    \begin{macrocode}
+%<sty>\newcommand\crossAndCrescentSetMacros{
+%<asy>path[] crossAndCrescentPath() {
+%    \end{macrocode}
+% Set the crescent radius $r$ to the length of a diagonal of an arm of the Greek
+% cross, $\sqrt{2^2 + 3^2} = \sqrt{13}$.
+%    \begin{macrocode}
+%<*sty>
+  \pgfmathsetmacro{\crescentRadius}
+    {sqrt(13)}
+%</sty>
+%<asy>  real crescentRadius = sqrt(13);
+%    \end{macrocode}
+% The $y$-coordinate of point $B$ is $1$. Plugging this into
+% equation~\ref{eq:outer circle} gives an $x$-coordinate of $\sqrt{r^2 - 1}$.
+%    \begin{macrocode}
+%<*sty>
+  \pgfmathsetmacro{\outerCoordinate}
+    {sqrt(\crescentRadius^2 - 1)}
+%</sty>
+%<asy>  real outerCoordinate = sqrt(crescentRadius^2 - 1);
+%    \end{macrocode}
+%
+% Point $C$ is the intersection of the outer and inner circles. Combine
+% equations~\ref{eq:outer circle} and \ref{eq:inner circle} to solve for the
+% coordinates of $C$:
+% \begin{equation}
+% \begin{array}{rcl}
+%           (C_x)^2 + (C_y)^2 & = & r^2 \\
+%   (C_x + 1)^2 + (C_y - 1)^2 & = & r^2
+% \end{array}
+% \end{equation}
+% Expanding terms and taking the difference of the equations gives the
+% $x$-coordinate of $C$ in terms of its $y$-coordinate:
+% \begin{equation}
+%   C_x = C_y - 1
+% \end{equation}
+% Plugging this into either equation and applying the quadratic formula gives
+% the $y$-coordinate of $C$ in quadrant~I:
+% \begin{equation}
+%   C_y = \frac{1 + \sqrt{2 r^2 - 1}}{2}
+% \end{equation}
+%    \begin{macrocode}
+%<*sty>
+  \pgfmathsetmacro{\intersectionCoordinate}
+    {(1 + sqrt(2 * \crescentRadius^2 - 1)) / 2}
+%</sty>
+%<asy>  real intersectionCoordinate = (1 + sqrt(2 * crescentRadius^2 - 1)) / 2;
+%    \end{macrocode}
+%
+% Arcs in \tikzname\ are in terms of angles. The angles for the arc from $B$ to
+% $C$ are
+% \begin{equation}
+%   \alpha = \arcsin\mleft(\frac{1}{r}\mright)
+% \end{equation}
+% and
+% \begin{equation}\label{eq:inner angle}
+%   \beta = \arctan\mleft(\frac{C_y}{C_x}\mright)
+%         = \arctan\mleft(\frac{C_y}{C_y - 1}\mright)
+% \end{equation}
+%    \begin{macrocode}
+%<*sty>
+  \pgfmathsetmacro{\outerAngle}
+    {asin(1 / \crescentRadius)}
+  \pgfmathsetmacro{\innerAngle}
+    {atan(\intersectionCoordinate / (\intersectionCoordinate - 1))}
+%</sty>
+%<*asy>
+  real outerAngle = degrees(asin(1 / crescentRadius));
+  real innerAngle = degrees(atan(intersectionCoordinate / (intersectionCoordinate - 1)));
+%</asy>
+%    \end{macrocode}
+%
+% The $x$-coordinate of point $D'$ is $-1$. Plugging this into
+% equation~\ref{eq:inner circle} gives a $y$-coordinate of $1 - r$.
+%    \begin{macrocode}
+%<*sty>
+  \pgfmathsetmacro{\innerCoordinate}
+    {1 - \crescentRadius}
+%</sty>
+%<asy>  real innerCoordinate = 1 - crescentRadius;
+%    \end{macrocode}
+%
+% The $x$-coordinate of point $E$ is $1$. Plugging this into
+% equation~\ref{eq:inner circle} gives a $y$-coordinate of
+% $1 - \sqrt{r^2 - 4}$.
+%    \begin{macrocode}
+%<*sty>
+  \pgfmathsetmacro{\interiorCoordinate}
+    {1 - sqrt(\crescentRadius^2 - 4)}
+%</sty>
+%<asy>  real interiorCoordinate = 1 - sqrt(crescentRadius^2 - 4);
+%    \end{macrocode}
+%
+% Finally, the angle for the arc from $E$ to $E'$ is
+% \begin{equation}
+%   \gamma = \arccos\mleft(\frac{2}{r}\mright)
+% \end{equation}
+%    \begin{macrocode}
+%<*sty>
+  \pgfmathsetmacro{\interiorAngle}
+    {acos(2 / \crescentRadius)}
+}
+%</sty>
+%<asy>  real interiorAngle = degrees(acos(2 / crescentRadius));
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\crossAndCrescentPath}
+% Define a command to create a path for a cross and crescent.
+%    \begin{macrocode}
+%<sty>\newcommand\crossAndCrescentPath{
+%<asy>  return
+%    \end{macrocode}
+% Start with a straight line from $A$ and $B$.
+%    \begin{macrocode}
+%<sty>  (4, 1) -- (\outerCoordinate, 1)
+%<asy>  (4, 1)
+%    \end{macrocode}
+% Add an arc to $C$.
+%    \begin{macrocode}
+%<*sty>
+  arc [
+    radius = \crescentRadius,
+    start angle = \outerAngle,
+    end angle = \innerAngle
+  ]
+%</sty>
+%<*asy>
+  -- (
+    arc((0, 0), crescentRadius, outerAngle, innerAngle)
+%</asy>
+%    \end{macrocode}
+% Combining equation~\ref{eq:inner angle} with the identity
+% $\arctan\mleft(\frac{1}{\theta}\mright) = 90° - \arctan(\theta)$ for
+% $\theta > 0°$, the angle for the arc from $C$ to $D$ is
+% \begin{equation}
+%   \beta' = \arctan\mleft(\frac{C_y - 1}{C_x + 1}\mright)
+%          = \arctan\mleft(\frac{C_y - 1}{C_y}\mright)
+%          = 90° - \beta
+% \end{equation}
+%    \begin{macrocode}
+%<*sty>
+  arc [
+    radius = \crescentRadius,
+    start angle = 90 - \innerAngle,
+    end angle = 0
+  ]
+%</sty>
+%<*asy>
+    & arc((-1, 1), crescentRadius, 90 - innerAngle, 0)
+  )
+%</asy>
+%    \end{macrocode}
+%
+% As an aside, this means that the angle between $C$, the center of the inner
+% circle, and $E$ is a right angle when $\beta = \gamma$. Since
+% \begin{equation}
+%   \beta = \arccos\mleft(\frac{C_y - 1}{r}\mright),
+% \end{equation}
+% solving
+% \begin{equation}
+%   \arccos\mleft(\frac{C_y - 1}{r}\mright) = \arccos\mleft(\frac{2}{r}\mright)
+% \end{equation}
+% shows that $r = \sqrt{13}$ produces a right angle.
+%
+% Add a path on the Greek cross from $D$ to $D'$.
+%    \begin{macrocode}
+  -- ( 1,  1) -- ( 1,  4) -- (-1,  4)
+  -- (-1,  1) -- (-4,  1) -- (-4, -1)
+  -- (-1, -1)
+%<sty>  -- (-1, \innerCoordinate)
+%    \end{macrocode}
+% Add an arc to $C'$.
+%    \begin{macrocode}
+%<*sty>
+  arc [
+    radius = \crescentRadius,
+    start angle = 270,
+    end angle = 180 + \innerAngle
+  ]
+%</sty>
+%<*asy>
+  -- (
+    arc((-1, 1), crescentRadius, 270, 180 + innerAngle)
+%</asy>
+%    \end{macrocode}
+% Add an arc to $B'$.
+%    \begin{macrocode}
+%<*sty>
+  arc [
+    radius = \crescentRadius,
+    start angle = 270 - \innerAngle,
+    end angle = 270 - \outerAngle
+  ]
+%</sty>
+%<*asy>
+    & arc((0, 0), crescentRadius, 270 - innerAngle, 270 - outerAngle)
+  )
+%</asy>
+%    \end{macrocode}
+% Add a path on the Greek cross to $B''$.
+%    \begin{macrocode}
+  -- (-1, -4) -- (1, -4)
+%<sty>  -- (1, -\outerCoordinate)
+%    \end{macrocode}
+% Add an arc to $B'''$.
+%    \begin{macrocode}
+%<*sty>
+  arc [
+    radius = \crescentRadius,
+    start angle = 270 + \outerAngle,
+    end angle = 360 - \outerAngle
+  ]
+%</sty>
+%<asy>  -- arc((0, 0), crescentRadius, 270 + outerAngle, 360 - outerAngle)
+%    \end{macrocode}
+% Close the path.
+%    \begin{macrocode}
+  -- (4, -1) -- cycle
+%    \end{macrocode}
+%
+% Move to the interior path. In \tikzname, the “operator” for moving to a point
+% is simply whitespace (see section~14.1 of the manual for \tikzname\ v3.0.1a).
+% In \texttt{Asymptote}, use the
+% \href{http://asymptote.sourceforge.net/doc/Paths.html#index-_005e_005e}{\texttt{\^{}\^{}}}
+% operator.
+%    \begin{macrocode}
+%<sty>
+%<asy>  ^^
+%    \end{macrocode}
+% Add the interior path.
+%    \begin{macrocode}
+%<sty>  (1, -1) -- (1, \interiorCoordinate)
+%<asy>  (1, -1)
+%    \end{macrocode}
+% Add an arc from $E$ to $E'$.
+%    \begin{macrocode}
+%<*sty>
+  arc [
+    radius = \crescentRadius,
+    start angle = -\interiorAngle,
+    end angle = \interiorAngle - 90
+  ]
+%</sty>
+%<asy>  -- arc((-1, 1), crescentRadius, -interiorAngle, interiorAngle - 90)
+%    \end{macrocode}
+% Close the path.
+%    \begin{macrocode}
+  -- cycle;
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\crossAndCrescent}
+% Finally, define a convenience macro to draw a cross and crescent.
+%    \begin{macrocode}
+%<*sty>
+\newcommand\crossAndCrescent[1][]{%
+  \begin{tikzpicture}[#1]
+    \crossAndCrescentSetMacros
+    \draw \crossAndCrescentPath
+  \end{tikzpicture}%
+}
+%</sty>
+%    \end{macrocode}
+% \end{macro}
+%
+% \Finale

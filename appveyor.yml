@@ -1,0 +1,38 @@
+# https://www.appveyor.com/docs/appveyor-yml
+
+install:
+  # Download and install a minimal TeX Live, based on
+  # https://github.com/latex3/latex3/blob/master/support/texlive.sh.
+  - ps: Start-FileDownload 'http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip'
+  - 7z x install-tl.zip
+  - cd install-tl-20*
+  # The install-tl-windows.bat script contains pause commands that stop
+  # execution until a key is pressed. Remove these.
+  - ps: Set-Content install-tl-windows.bat (Get-Content install-tl-windows.bat | Select-String -Pattern '^pause$' -NotMatch)
+  - ps: Set-Content texlive.profile "selected_scheme scheme-minimal`nTEXDIR C:\texlive`noption_doc 0`noption_src 0`n"
+  - install-tl-windows -gui=text -profile=texlive.profile
+  - cd ..
+  - set PATH=%PATH%;C:\texlive\bin\win32
+  - tlmgr install
+    asymptote
+    fontspec
+    graphics
+    hyperref
+    latex-bin
+    oberdiek
+    pgf
+    standalone
+    url
+    xcolor
+    xetex
+    xkeyval
+    zapfding
+
+build_script:
+  - for /l %%G in (1, 1, 2) do xetex -fmt=xelatex -interaction=batchmode cross-and-crescent.dtx
+  - latex -interaction batchmode -jobname logo -output-format pdf "\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}"
+  - asy -outformat pdf -outname logo.pdf -noView -command "include ""cross-and-crescent.asy""; draw(crossAndCrescentPath());"
+
+test: off
+
+skip_tags: true
