@@ -11,8 +11,8 @@ This is a [LaTeX](https://www.latex-project.org) package for drawing the logo of
 ## Installing
 
 To install the cross-and-crescent package, download cross-and-crescent.sty from
-the [Releases](https://github.com/lcamichigan/cross-and-crescent/releases). Move
-this file to your TeX local installation directory. If you use
+the [Releases](https://github.com/lcamichigan/cross-and-crescent/releases), and
+then move this file to your TeX local installation directory. If you use
 [TeX Live](https://www.tug.org/texlive/) on Windows, this directory is probably
 C:\texlive\texmf-local, and you can move cross-and-crescent.sty by entering in
 Command Prompt
