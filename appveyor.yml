@@ -31,7 +31,7 @@ install:
 build_script:
   - for /l %%G in (1, 1, 2) do xetex -fmt=xelatex -interaction=batchmode cross-and-crescent.dtx
   - latex -interaction batchmode -jobname logo -output-format pdf "\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}"
-  - asy -outformat pdf -outname logo.pdf -noView -command "include ""cross-and-crescent.asy""; draw(crossAndCrescentPath());"
+  - asy -outformat pdf -outname logo.pdf -noView -command "include ""crossAndCrescent""; draw(crossAndCrescentPath());"
 
 test: off
 

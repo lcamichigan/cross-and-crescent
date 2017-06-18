@@ -12,9 +12,9 @@
 % This file has the LPPL maintenance status `maintained'.
 %
 % This work consists of the file cross-and-crescent.dtx and the derived files
-%   cross-and-crescent.asy
 %   cross-and-crescent.pdf
 %   cross-and-crescent.sty
+%   crossAndCrescent.asy
 %<*internal>
 \begingroup
 \input docstrip
@@ -38,14 +38,14 @@ This file has the LPPL maintenance status `maintained'.
 \askforoverwritefalse
 \generate{
   \file{cross-and-crescent.sty}{\from{cross-and-crescent.dtx}{sty}}
-  \file{cross-and-crescent.asy}{\nopreamble\nopostamble\from{cross-and-crescent.dtx}{asy}}
+  \file{crossAndCrescent.asy}{\nopreamble\nopostamble\from{cross-and-crescent.dtx}{asy}}
 }
 \endgroup
 %</internal>
 %
 %<*sty>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{cross-and-crescent}[2017/06/09 v1.0 Draw a cross and crescent]
+\ProvidesPackage{cross-and-crescent}[2017/06/18 v1.1 Draw a cross and crescent]
 %</sty>
 %
 %<*driver>
@@ -63,11 +63,12 @@ This file has the LPPL maintenance status `maintained'.
 %
 % \GetFileInfo{cross-and-crescent.sty}
 %
+% \changes{v1.1}{2017/06/18}{Don’t use hyphens in name of Asymptote file}
 % \changes{v1.0}{2017/06/09}{Initial release}
 %
 % \title{The \textsf{cross-and-crescent} package}
 % \author{Sigma Zeta of ΛΧΑ}
-% \date{June 9, 2017}
+% \date{June 18, 2017}
 %
 % \maketitle
 %

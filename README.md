@@ -83,7 +83,7 @@ for a cross and crescent. For example, enter in Terminal
 
 ```sh
 asy -outformat png -noView -command '
-include "cross-and-crescent.asy";
+include crossAndCrescent;
 real size = 400; size(size);
 fill(scale(size) * shift(-0.5, -0.5) * unitsquare, cmyk(1, 0.6, 0, 0.6));
 fill(scale(42) * crossAndCrescentPath(), cmyk(0, 0.18, 1, 0) + evenodd);
