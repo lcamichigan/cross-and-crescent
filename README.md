@@ -59,7 +59,7 @@ You can use the cross-and-crescent package in a TeX document like this:
 \begin{document}
 \begin{tikzpicture}
   \crossAndCrescentSetMacros
-  \draw \crossAndCrescentPath
+  \draw\crossAndCrescentPath
 \end{tikzpicture}
 \end{document}
 ```
