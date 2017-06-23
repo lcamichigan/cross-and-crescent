@@ -20,7 +20,7 @@ Command Prompt
 ```batch
 set crossAndCrescent=C:\texlive\texmf-local\tex\latex\local\cross-and-crescent
 if not exist %crossAndCrescent%\NUL mkdir %crossAndCrescent%
-copy /y cross-and-crescent.sty %crossAndCrescent%
+move /y cross-and-crescent.sty %crossAndCrescent%
 ```
 
 If you use [MacTeX](https://www.tug.org/mactex/) on macOS, your TeX local
@@ -30,7 +30,7 @@ move cross-and-crescent.sty by entering in Terminal
 ```sh
 crossAndCrescent=/usr/local/texlive/texmf-local/tex/latex/local/cross-and-crescent
 sudo mkdir -p $crossAndCrescent
-sudo cp -f cross-and-crescent.sty $crossAndCrescent
+sudo mv -f cross-and-crescent.sty $crossAndCrescent
 ```
 
 Regardless of what platform you use, remember to run `mktexlsr` after moving
