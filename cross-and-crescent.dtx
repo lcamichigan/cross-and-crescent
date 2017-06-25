@@ -45,7 +45,7 @@ This file has the LPPL maintenance status `maintained'.
 %
 %<*sty>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{cross-and-crescent}[2017/06/22 v1.2 Draw a cross and crescent]
+\ProvidesPackage{cross-and-crescent}[2017/06/25 v1.3 Draw a cross and crescent]
 %</sty>
 %
 %<*driver>
@@ -63,13 +63,14 @@ This file has the LPPL maintenance status `maintained'.
 %
 % \GetFileInfo{cross-and-crescent.sty}
 %
+% \changes{v1.3}{2017/06/25}{Fix scaling of Greek cross in documentation}
 % \changes{v1.2}{2017/06/22}{Minor simplification of documentation}
 % \changes{v1.1}{2017/06/18}{Don’t use hyphens in name of Asymptote file}
 % \changes{v1.0}{2017/06/09}{Initial release}
 %
 % \title{The \textsf{cross-and-crescent} package}
 % \author{Sigma Zeta of ΛΧΑ}
-% \date{June 22, 2017}
+% \date{June 25, 2017}
 %
 % \maketitle
 %
@@ -163,7 +164,7 @@ This file has the LPPL maintenance status `maintained'.
 % A cross and crescent consists of segments of three shapes:
 % \begin{enumerate}
 %   \item A Greek cross
-%   \tikz[scale=0.125 / 0.9ex] \draw[gold, thick]
+%   \tikz[scale=1.75ex / 8cm] \draw[gold, thick]
 %     ( 4,  1) --
 %     ( 1,  1) -- ( 1,  4) -- (-1,  4) --
 %     (-1,  1) -- (-4,  1) -- (-4, -1) --
