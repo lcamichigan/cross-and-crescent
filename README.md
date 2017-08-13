@@ -15,7 +15,15 @@ the [Releases](https://github.com/lcamichigan/cross-and-crescent/releases), and
 then move this file to your TeX local installation directory. If you use
 [TeX Live](https://www.tug.org/texlive/) on Windows, this directory is probably
 C:\texlive\texmf-local, and you can move cross-and-crescent.sty by entering in
-Command Prompt
+PowerShell
+
+```powershell
+$crossAndCrescent = 'C:\texlive\texmf-local\tex\latex\local\cross-and-crescent'
+New-Item $crossAndCrescent -ItemType directory -Force
+Move-Item cross-and-crescent.sty -Destination $crossAndCrescent -Force
+```
+
+or in Command Prompt
 
 ```batch
 set crossAndCrescent=C:\texlive\texmf-local\tex\latex\local\cross-and-crescent
@@ -37,7 +45,13 @@ Regardless of what platform you use, remember to run `mktexlsr` after moving
 cross-and-crescent.sty to your TeX local installation directory.
 
 If you’d rather create cross-and-crescent.sty from its
-[source](cross-and-crescent.dtx), enter in Command Prompt
+[source](cross-and-crescent.dtx), enter in PowerShell
+
+```powershell
+ForEach ($i in 1..2) { xetex -fmt=xelatex cross-and-crescent.dtx }
+```
+
+or in Command Prompt
 
 ```batch
 for /l %G in (1, 1, 2) do xetex -fmt=xelatex cross-and-crescent.dtx
@@ -65,7 +79,7 @@ You can use the cross-and-crescent package in a TeX document like this:
 ```
 
 If you just want to create a PDF file of a cross and crescent, you can enter in
-Command Prompt
+PowerShell or Command Prompt
 
 ```batch
 latex -jobname logo -output-format pdf "\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}"
