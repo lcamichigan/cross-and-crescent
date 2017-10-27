@@ -38,4 +38,9 @@ build_script:
 
 test: off
 
+artifacts:
+  - path: cross-and-crescent.pdf
+  - path: cross-and-crescent.sty
+  - path: crossAndCrescent.asy
+
 skip_tags: true
