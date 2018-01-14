@@ -27,7 +27,7 @@ or in Command Prompt
 
 ```batch
 set crossAndCrescent=C:\texlive\texmf-local\tex\latex\local\cross-and-crescent
-if not exist %crossAndCrescent%\NUL mkdir %crossAndCrescent%
+if not exist %crossAndCrescent%\nul mkdir %crossAndCrescent%
 move /y cross-and-crescent.sty %crossAndCrescent%
 ```
 
@@ -93,7 +93,9 @@ latex -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cr
 
 You can use the Asymptote script by `include`-ing it. The Asymptote script
 contains a single function `crossAndCrescentPath` that returns an array of paths
-for a cross and crescent. For example, enter in Terminal
+for a cross and crescent. For example, to create the GitHub profile picture for
+the [lcamichigan](https://github.com/lcamichigan) organization, enter in
+Terminal
 
 ```sh
 asy -outformat png -noView -command '
@@ -103,6 +105,3 @@ fill(scale(size) * shift(-0.5, -0.5) * unitsquare, cmyk(1, 0.6, 0, 0.6));
 fill(scale(42) * crossAndCrescentPath(), cmyk(0, 0.18, 1, 0) + evenodd);
 ' picture.png
 ```
-
-to create the GitHub profile picture for the
-[lcamichigan](https://github.com/lcamichigan) organization.
