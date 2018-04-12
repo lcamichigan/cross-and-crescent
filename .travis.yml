@@ -39,6 +39,6 @@ install:
     standalone
 
 script:
-  - for i in {1..2}; do luatex -fmt=lualatex -interaction=batchmode cross-and-crescent.dtx; done
+  - for i in {1..2}; do lualatex -interaction=batchmode cross-and-crescent.dtx; done
   - latex -interaction batchmode -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
   - asy -outformat pdf -outname logo.pdf -noView -command 'include crossAndCrescent; draw(crossAndCrescentPath());'

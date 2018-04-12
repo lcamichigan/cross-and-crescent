@@ -48,19 +48,19 @@ If you’d rather create cross-and-crescent.sty from its
 [source](cross-and-crescent.dtx), enter in PowerShell
 
 ```powershell
-ForEach ($i in 1..2) { luatex -fmt=lualatex cross-and-crescent.dtx }
+ForEach ($i in 1..2) { lualatex cross-and-crescent.dtx }
 ```
 
 or in Command Prompt
 
 ```batch
-for /l %G in (1, 1, 2) do luatex -fmt=lualatex cross-and-crescent.dtx
+for /l %G in (1, 1, 2) do lualatex cross-and-crescent.dtx
 ```
 
 or in Terminal
 
 ```sh
-for i in {1..2}; do luatex -fmt=lualatex cross-and-crescent.dtx; done
+for i in {1..2}; do lualatex cross-and-crescent.dtx; done
 ```
 
 ## Usage
