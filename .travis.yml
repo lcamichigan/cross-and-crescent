@@ -34,7 +34,7 @@ install:
   # Install packages required to test cross-and-crescent.sty and
   # crossAndCrescent.asy. (Asymptote requires Ghostscript.)
   - HOMEBREW_NO_AUTO_UPDATE=1 brew install ghostscript
-  - tlmgr install
+  - sudo tlmgr install
     asymptote
     standalone
 
