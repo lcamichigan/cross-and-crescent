@@ -34,7 +34,7 @@ install:
 
 build_script:
   - ps: ForEach ($i in 1..2) { lualatex -interaction=batchmode cross-and-crescent.dtx }
-  - ps: latex -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
+  - ps: latex -interaction batchmode -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
   - ps: asy -outformat pdf -outname logo.pdf -noView -command 'include crossAndCrescent; draw(crossAndCrescentPath());'
 
   - del cross-and-crescent.sty crossAndCrescent.asy
@@ -51,6 +51,3 @@ artifacts:
   - path: crossAndCrescent.asy
 
 skip_tags: true
-
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
