@@ -32,13 +32,13 @@ install:
     standalone
 
 build_script:
-  - ps: ForEach ($i in 1..2) { lualatex cross-and-crescent.dtx }
-  - ps: latex -interaction batchmode -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
+  - ps: ForEach ($i in 1..2) { lualatex -interaction=batchmode cross-and-crescent.dtx }
+  - ps: latex -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
   - ps: asy -outformat pdf -outname logo.pdf -noView -command 'include crossAndCrescent; draw(crossAndCrescentPath());'
 
   - del cross-and-crescent.sty crossAndCrescent.asy
 
-  - for /l %%G in (1, 1, 2) do lualatex cross-and-crescent.dtx
+  - for /l %%G in (1, 1, 2) do lualatex -interaction=batchmode cross-and-crescent.dtx
   - latex -interaction batchmode -jobname logo -output-format pdf "\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}"
   - asy -outformat pdf -outname logo.pdf -noView -command "include crossAndCrescent; draw(crossAndCrescentPath());"
 
