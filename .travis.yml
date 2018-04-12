@@ -37,6 +37,7 @@ install:
   - sudo tlmgr install
     asymptote
     standalone
+    xkeyval
 
 script:
   - for i in {1..2}; do lualatex -interaction=batchmode cross-and-crescent.dtx; done

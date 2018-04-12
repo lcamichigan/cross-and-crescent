@@ -30,6 +30,7 @@ install:
   - tlmgr install
     asymptote
     standalone
+    xkeyval
 
 build_script:
   - ps: ForEach ($i in 1..2) { lualatex -interaction=batchmode cross-and-crescent.dtx }
