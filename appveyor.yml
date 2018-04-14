@@ -13,8 +13,6 @@ install:
   - install-tl-windows -no-gui -profile=texlive.profile
   - cd ..
   - set PATH=%PATH%;C:\texlive\bin\win32
-  # Install packages required to create cross-and-crescent.sty and
-  # crossAndCrescent.asy.
   - tlmgr install
     fontspec
     graphics
@@ -25,25 +23,23 @@ install:
     pgf
     url
     xcolor
-  # Install packages required to test cross-and-crescent.sty and
-  # crossAndCrescent.asy.
+
+build_script:
+  - ps: ForEach ($i in 1..2) { lualatex -interaction=batchmode cross-and-crescent.dtx }
+  - del cross-and-crescent.sty crossAndCrescent.asy
+  - for /l %%G in (1, 1, 2) do lualatex -interaction=batchmode cross-and-crescent.dtx
+
+before_test:
   - tlmgr install
     asymptote
     standalone
     xkeyval
 
-build_script:
-  - ps: ForEach ($i in 1..2) { lualatex -interaction=batchmode cross-and-crescent.dtx }
+test:
   - ps: latex -interaction batchmode -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
   - ps: asy -outformat pdf -outname logo.pdf -noView -command 'include crossAndCrescent; draw(crossAndCrescentPath());'
-
-  - del cross-and-crescent.sty crossAndCrescent.asy
-
-  - for /l %%G in (1, 1, 2) do lualatex -interaction=batchmode cross-and-crescent.dtx
   - latex -interaction batchmode -jobname logo -output-format pdf "\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}"
   - asy -outformat pdf -outname logo.pdf -noView -command "include crossAndCrescent; draw(crossAndCrescentPath());"
-
-test: off
 
 artifacts:
   - path: cross-and-crescent.pdf
