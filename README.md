@@ -65,7 +65,7 @@ for i in {1..2}; do lualatex cross-and-crescent.dtx; done
 
 ## Usage
 
-You can use the cross-and-crescent package in a TeX document like this:
+You can use the cross-and-crescent package in a LaTeX document like this:
 
 ```tex
 \documentclass{article}
