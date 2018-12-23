@@ -48,7 +48,7 @@ If you’d rather create cross-and-crescent.sty from its
 [source](cross-and-crescent.dtx), enter in PowerShell:
 
 ```powershell
-ForEach ($i in 1..2) { lualatex cross-and-crescent.dtx }
+foreach ($i in 1..2) { lualatex cross-and-crescent.dtx }
 ```
 
 or in Command Prompt:
