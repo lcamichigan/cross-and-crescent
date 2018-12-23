@@ -20,7 +20,7 @@ PowerShell
 ```powershell
 $crossAndCrescent = 'C:\texlive\texmf-local\tex\latex\local\cross-and-crescent'
 New-Item $crossAndCrescent -ItemType directory -Force
-Move-Item cross-and-crescent.sty -Destination $crossAndCrescent -Force
+Move-Item cross-and-crescent.sty $crossAndCrescent -Force
 ```
 
 or in Command Prompt
