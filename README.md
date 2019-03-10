@@ -15,7 +15,7 @@ the [Releases](https://github.com/lcamichigan/cross-and-crescent/releases), and
 then move this file to your TeX local installation directory. If you use
 [TeX Live](https://www.tug.org/texlive/) on Windows, this directory is probably
 C:\texlive\texmf-local, and you can move cross-and-crescent.sty by entering in
-PowerShell
+PowerShell:
 
 ```powershell
 $crossAndCrescent = 'C:\texlive\texmf-local\tex\latex\local\cross-and-crescent'
@@ -23,7 +23,7 @@ New-Item $crossAndCrescent -ItemType directory -Force
 Move-Item cross-and-crescent.sty $crossAndCrescent -Force
 ```
 
-or in Command Prompt
+or in Command Prompt:
 
 ```batch
 set crossAndCrescent=C:\texlive\texmf-local\tex\latex\local\cross-and-crescent
@@ -33,7 +33,7 @@ move /y cross-and-crescent.sty %crossAndCrescent%
 
 If you use [MacTeX](https://www.tug.org/mactex/) on macOS, your TeX local
 installation directory is probably /usr/local/texlive/texmf-local, and you can
-move cross-and-crescent.sty by entering in Terminal
+move cross-and-crescent.sty by entering in Terminal:
 
 ```sh
 crossAndCrescent=/usr/local/texlive/texmf-local/tex/latex/local/cross-and-crescent
