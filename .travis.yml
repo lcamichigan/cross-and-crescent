@@ -14,6 +14,7 @@ install:
   # Install packages required to create cross-and-crescent.sty and
   # crossAndCrescent.asy.
   - sudo tlmgr install
+    cleveref
     fontspec
     graphics
     hyperref

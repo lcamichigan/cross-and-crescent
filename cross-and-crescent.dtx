@@ -45,7 +45,7 @@ This file has the LPPL maintenance status `maintained'.
 %
 %<*sty>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{cross-and-crescent}[2017/09/07 v1.4 Draw a cross and crescent]
+\ProvidesPackage{cross-and-crescent}[2019/03/10 v1.5 Draw a cross and crescent]
 %</sty>
 %
 %<*driver>
@@ -53,6 +53,7 @@ This file has the LPPL maintenance status `maintained'.
 \usepackage[no-config]{fontspec}
 \usepackage{cross-and-crescent}
 \usepackage[colorlinks]{hyperref}
+\usepackage{cleveref}
 \usepackage{mleftright}
 \usetikzlibrary{calc}
 \begin{document}
@@ -63,6 +64,7 @@ This file has the LPPL maintenance status `maintained'.
 %
 % \GetFileInfo{cross-and-crescent.sty}
 %
+% \changes{v1.5}{2019/03/10}{Use cleveref package in documentation}
 % \changes{v1.4}{2017/09/07}{Fix typo in documentation}
 % \changes{v1.3}{2017/06/25}{Fix scaling of Greek cross in documentation}
 % \changes{v1.2}{2017/06/22}{Minor simplification of documentation}
@@ -71,7 +73,7 @@ This file has the LPPL maintenance status `maintained'.
 %
 % \title{The \textsf{cross-and-crescent} package}
 % \author{Sigma Zeta of ΛΧΑ}
-% \date{September 7, 2017}
+% \date{March 10, 2019}
 %
 % \maketitle
 %
@@ -211,7 +213,7 @@ This file has the LPPL maintenance status `maintained'.
 %<asy>  real crescentRadius = sqrt(13);
 %    \end{macrocode}
 % The $y$-coordinate of point $B$ is $1$. Plugging this into
-% equation~\ref{eq:outer circle} gives an $x$-coordinate of $\sqrt{r^2 - 1}$.
+% \cref{eq:outer circle} gives an $x$-coordinate of $\sqrt{r^2 - 1}$.
 %    \begin{macrocode}
 %<*sty>
   \pgfmathsetmacro{\outerCoordinate}
@@ -221,8 +223,7 @@ This file has the LPPL maintenance status `maintained'.
 %    \end{macrocode}
 %
 % Point $C$ is the intersection of the outer and inner circles. Combine
-% equations~\ref{eq:outer circle} and \ref{eq:inner circle} to solve for the
-% coordinates of $C$:
+% \cref{eq:outer circle,eq:inner circle} to solve for the coordinates of $C$:
 % \begin{equation}
 % \begin{array}{rcl}
 %           (C_x)^2 + (C_y)^2 & = & r^2 \\
@@ -271,7 +272,7 @@ This file has the LPPL maintenance status `maintained'.
 %    \end{macrocode}
 %
 % The $x$-coordinate of point $D'$ is $-1$. Plugging this into
-% equation~\ref{eq:inner circle} gives a $y$-coordinate of $1 - r$.
+% \cref{eq:inner circle} gives a $y$-coordinate of $1 - r$.
 %    \begin{macrocode}
 %<*sty>
   \pgfmathsetmacro{\innerCoordinate}
@@ -281,7 +282,7 @@ This file has the LPPL maintenance status `maintained'.
 %    \end{macrocode}
 %
 % The $x$-coordinate of point $E$ is $1$. Plugging this into
-% equation~\ref{eq:inner circle} gives a $y$-coordinate of
+% \cref{eq:inner circle} gives a $y$-coordinate of
 % $1 - \sqrt{r^2 - 4}$.
 %    \begin{macrocode}
 %<*sty>
@@ -330,7 +331,7 @@ This file has the LPPL maintenance status `maintained'.
     arc((0, 0), crescentRadius, outerAngle, innerAngle)
 %</asy>
 %    \end{macrocode}
-% Combining equation~\ref{eq:inner angle} with the identity
+% Combining \cref{eq:inner angle} with the identity
 % $\arctan\mleft(\frac{1}{\theta}\mright) = 90° - \arctan(\theta)$ for
 % $\theta > 0°$, the angle for the arc from $C$ to $D$ is
 % \begin{equation}

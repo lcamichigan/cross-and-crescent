@@ -11,6 +11,7 @@ install:
   - cd ..
   - set PATH=%PATH%;C:\texlive\bin\win32
   - tlmgr install
+    cleveref
     fontspec
     graphics
     hyperref
