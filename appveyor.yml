@@ -34,9 +34,9 @@ before_test:
     xkeyval
 
 test_script:
-  - ps: latex -interaction batchmode -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
+  - ps: pdflatex -interaction batchmode -jobname logo '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
   - ps: asy -outformat pdf -outname logo.pdf -noView -command 'include crossAndCrescent; draw(crossAndCrescentPath());'
-  - latex -interaction batchmode -jobname logo -output-format pdf "\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}"
+  - pdflatex -interaction batchmode -jobname logo "\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}"
   - asy -outformat pdf -outname logo.pdf -noView -command "include crossAndCrescent; draw(crossAndCrescentPath());"
 
 artifacts:

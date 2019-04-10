@@ -82,13 +82,13 @@ If you just want to create a PDF file of a cross and crescent, you can enter in
 PowerShell or Command Prompt:
 
 ```batch
-latex -jobname logo -output-format pdf "\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}"
+pdflatex -jobname logo "\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}"
 ```
 
 or in Terminal:
 
 ```sh
-latex -jobname logo -output-format pdf '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
+pdflatex -jobname logo '\documentclass{standalone}\usepackage{cross-and-crescent}\begin{document}\crossAndCrescent\end{document}'
 ```
 
 You can use the Asymptote script by `include`-ing it. The Asymptote script
